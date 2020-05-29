@@ -13,7 +13,7 @@
 <!-- Hero -->
   <section class="et-hero-tabs">
     <h1>Hack This Site</h1>
-    <h3>Try Running document.getElementById("demo").innerHTML = "I'm a 1337 coder"; </h3>
+    <h3>To view the matrix code below try running this code:  document.getElementById("demo").innerHTML = letters.join(""); </h3>
     
     <script>
       function doIt() {
@@ -25,15 +25,24 @@
       }
       </script>
       
-      <textarea name="textarea" id="textarea">
+      <textarea name="textarea" id="textarea" style="width: 50vw; height: 10vh;">
       </textarea>
       <input type="button" value="Execute" onclick="doIt();" />
       
-      <p id="demo"></p>
+      <canvas height="200" >
+            
+      </canvas>
+      <!-- partial -->
+        <script  src="./script.js"></script>
+      
+      
+
+      
+      <h3 id="demo"> </h3>
     <div class="et-hero-tabs-container">
-      <a class="et-hero-tab" href="#tab-es6">ES6</a>
+      <a class="et-hero-tab" href="#tab-es6">Hack This Site</a>
       <a class="et-hero-tab" href="#tab-flexbox">Share Your Code</a>
-      <a class="et-hero-tab" href="#tab-react">Other's Projects</a>
+      <a class="et-hero-tab" href="#tab-react">Other's Code</a>
       <a class="et-hero-tab" href="#tab-angular">About</a>
       <a class="et-hero-tab" href="#tab-other">Source Repository</a>
       <span class="et-hero-tab-slider"></span>
@@ -43,24 +52,24 @@
   <!-- Main -->
   <main class="et-main">
     <section class="et-slide" id="tab-es6">
-      <h1>ES6</h1>
-      <h3>something about es6</h3>
+      <h1>Hack This Site</h1>
+      <h3>Javascript Supplied above will directly excute on this site. <br>Below the text box is an html5 canvas you can change the message as you please<br> Simply supply a string to the global variable letters</h3>
     </section>
     <section class="et-slide" id="tab-flexbox">
-      <h1>Flexbox</h1>
-      <h3>something about flexbox</h3>
+      <h1>Share Your Code</h1>
+      <h3>Share Your Code By Pressing The lambda symbol up top. It will push the code anonymously to a public database.<br> If you wish to declare a license and remove your anonymity feel free to comment that in. </h3>
     </section>
     <section class="et-slide" id="tab-react">
-      <h1>React</h1>
-      <h3>something about react</h3>
+      <h1>Other's Code</h1>
+      <h3>Check out what others have cooked up here</h3>
     </section>
     <section class="et-slide" id="tab-angular">
-      <h1>Angular</h1>
-      <h3>something about angular</h3>
+      <h1>About</h1>
+      <h3>This project was coded overnight for the RookieHacks hackathon By Kenneth Sweet </h3>
     </section>
     <section class="et-slide" id="tab-other">
-      <h1>Other</h1>
-      <h3>something about other</h3>
+      <h1>Source Repository</h1>
+      <h3>This code is open source and hosted here https://github.com/Kenneth-Sweet/SweetHacks.Tech </h3>
     </section>
   </main>
 <!-- partial -->
