@@ -1,37 +1,70 @@
-<html>
+<!DOCTYPE html>
+<html lang="en" >
 <head>
+  <meta charset="UTF-8">
+  <title>CodePen - Sticky Slider Navigation (Responsive)</title>
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="./style.css">
+
 </head>
 <body>
-<script>
-function doIt() {
-    var headID = document.getElementsByTagName("head")[0];
-    var newScript = document.createElement("script");
-    newScript.type = "text/javascript";
-    newScript.innerHTML = document.getElementById("textarea").value;
-    headID.appendChild(newScript);
-}
-</script>
-
-<textarea name="textarea" id="textarea">
-</textarea>
-<input type="button" value="Do It" onclick="doIt();" />
-
-<p id="demo"> adfasdf</p>
-
-
-<div class="left">
-    Hello
-</div>
-<div class="center">
-       <div class="left1">
-           Bye
+  
+<!-- partial:index.partial.html -->
+<!-- Hero -->
+  <section class="et-hero-tabs">
+    <h1>Hack This Site</h1>
+    <h3>Try Running document.getElementById("demo").innerHTML = "I'm a 1337 coder"; </h3>
+    
+    <script>
+      function doIt() {
+          var headID = document.getElementsByTagName("head")[0];
+          var newScript = document.createElement("script");
+          newScript.type = "text/javascript";
+          newScript.innerHTML = document.getElementById("textarea").value;
+          headID.appendChild(newScript);
+      }
+      </script>
+      
+      <textarea name="textarea" id="textarea">
+      </textarea>
+      <input type="button" value="Execute" onclick="doIt();" />
+      
+      <p id="demo"></p>
+    <div class="et-hero-tabs-container">
+      <a class="et-hero-tab" href="#tab-es6">ES6</a>
+      <a class="et-hero-tab" href="#tab-flexbox">Share Your Code</a>
+      <a class="et-hero-tab" href="#tab-react">Other's Projects</a>
+      <a class="et-hero-tab" href="#tab-angular">About</a>
+      <a class="et-hero-tab" href="#tab-other">Source Repository</a>
+      <span class="et-hero-tab-slider"></span>
     </div>
-       <div class="right1">
-           Bye1
-    </div>    
-</div>
-<div class="right">
-    Hello2
-</div>
+  </section>
+
+  <!-- Main -->
+  <main class="et-main">
+    <section class="et-slide" id="tab-es6">
+      <h1>ES6</h1>
+      <h3>something about es6</h3>
+    </section>
+    <section class="et-slide" id="tab-flexbox">
+      <h1>Flexbox</h1>
+      <h3>something about flexbox</h3>
+    </section>
+    <section class="et-slide" id="tab-react">
+      <h1>React</h1>
+      <h3>something about react</h3>
+    </section>
+    <section class="et-slide" id="tab-angular">
+      <h1>Angular</h1>
+      <h3>something about angular</h3>
+    </section>
+    <section class="et-slide" id="tab-other">
+      <h1>Other</h1>
+      <h3>something about other</h3>
+    </section>
+  </main>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script><script  src="./script.js"></script>
+
 </body>
-<html>
+</html>
