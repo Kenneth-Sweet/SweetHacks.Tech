@@ -1,0 +1,37 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+function doIt() {
+    var headID = document.getElementsByTagName("head")[0];
+    var newScript = document.createElement("script");
+    newScript.type = "text/javascript";
+    newScript.innerHTML = document.getElementById("textarea").value;
+    headID.appendChild(newScript);
+}
+</script>
+
+<textarea name="textarea" id="textarea">
+</textarea>
+<input type="button" value="Do It" onclick="doIt();" />
+
+<p id="demo"> adfasdf</p>
+
+
+<div class="left">
+    Hello
+</div>
+<div class="center">
+       <div class="left1">
+           Bye
+    </div>
+       <div class="right1">
+           Bye1
+    </div>    
+</div>
+<div class="right">
+    Hello2
+</div>
+</body>
+<html>
