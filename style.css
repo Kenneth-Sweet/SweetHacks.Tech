@@ -107,3 +107,19 @@ textarea {
   background-color: #444;
   color: rgb(33, 211, 33);
 }
+
+.code {
+  background: #444;
+    border: 1px solid #ddd;
+    border-left: 3px solid #f36d33;
+    color: #0f1;
+ 
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 1.6em;
+    max-width: 100%;
+    overflow: auto;
+    padding: 1em 1.5em;
+    display: block;
+    word-wrap: break-word;
+}
