@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" >
+  <link rel="shortcut icon" type="image/png" href="favicon.ico"/>
 <head>
   <meta charset="UTF-8">
   <title>CodePen - Sticky Slider Navigation (Responsive)</title>
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 <link rel="stylesheet" href="./style.css">
+<script src="https://script.sheetsu.com/"></script>
 
 </head>
 <body>
@@ -35,7 +37,7 @@
       <!-- partial -->
         <script  src="./script.js"></script>
       
-      
+       
 
       
       <h3 id="demo"> </h3>
@@ -58,10 +60,57 @@
     <section class="et-slide" id="tab-flexbox">
       <h1>Share Your Code</h1>
       <h3>Share Your Code By Pressing The lambda symbol up top. It will push the code anonymously to a public database.<br> If you wish to declare a license and remove your anonymity feel free to comment that in. </h3>
+
+      <form id="myForm">
+        <input type="text" name="first_name">
+        <input type="text" name="score">
+        <button type="submit">Save</button>
+      </form>
+    
+      <script>
+    
+        document.querySelector("#myForm").addEventListener("submit", function(e) {
+          e.preventDefault();
+          saveData();
+        });
+    
+        function saveData() {
+          // Get data from inputs
+          var first_name = document.getElementsByName("first_name")[0].value,
+              score = document.getElementsByName("score")[0].value;
+    
+          // Prepare JSON to be send
+          var data = { name: first_name, score: score };
+    
+          // Save data to a spreadsheet
+          // Arguments
+          // 1 - API URL
+          // 2 - JSON representation of a row you want to save
+          // 3 - options
+          // 4 - callback function after successful save
+          Sheetsu.write("https://sheetsu.com/apis/v1.0su/bcbfe234bd57", data, {})
+            .then(function(x) {console.log(x);}, function(e) {console.log(e)});
+        }
+      </script>
+      <script src="https://load.sheetsu.com"></script>
+
     </section>
     <section class="et-slide" id="tab-react">
       <h1>Other's Code</h1>
       <h3>Check out what others have cooked up here</h3>
+      <ul id="list"></ul>
+
+      <script>
+        // API returns array of objects
+        // Iterate over them and add each element as a list element
+        function successFunc(data) {
+          data.forEach(function(item, i) {
+            document.getElementById("list").innerHTML += "<li>" + item.name + " " + item.score + "</li>";
+          });
+        }
+    
+        Sheetsu.read("https://sheetsu.com/apis/v1.0/020b2c0f/", {}, successFunc);
+      </script>
     </section>
     <section class="et-slide" id="tab-angular">
       <h1>About</h1>
@@ -72,8 +121,5 @@
       <h3>This code is open source and hosted here https://github.com/Kenneth-Sweet/SweetHacks.Tech </h3>
     </section>
   </main>
-<!-- partial -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script><script  src="./script.js"></script>
-
 </body>
 </html>
