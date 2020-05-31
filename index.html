@@ -61,38 +61,139 @@
       <h1>Share Your Code</h1>
       <h3>Share Your Code By Pressing The lambda symbol up top. It will push the code anonymously to a public database.<br> If you wish to declare a license and remove your anonymity feel free to comment that in. </h3>
 
-      <form id="myForm">
-        <input type="text" name="first_name">
-        <input type="text" name="score">
-        <button type="submit">Save</button>
-      </form>
-    
-      <script>
-    
-        document.querySelector("#myForm").addEventListener("submit", function(e) {
+      <script src="//script.sheetsu.com/"></script>
+
+      <div class="container">
+      
+        <div class="row mt-5 mb-5">
+          <div class="col-md-6 offset-md-3 col-sm-12 col-xs-12">
+            
+          </div>
+        </div>
+      
+          <form id="form" method="POST" action="/a/f">
+              <div class="row mt-4">
+                <div class="col-md-6 offset-md-3 col-sm-12 col-xs-12">
+                  <div class="form-group">
+                    <label for="sheetsu_input_0">Alias</label>
+                    <input id="sheetsu_input_0" class="form-control" type="text" name="Alias">
+                  </div>
+                </div>
+              </div>
+              <div class="row mt-4">
+                <div class="col-md-6 offset-md-3 col-sm-12 col-xs-12">
+                  <div class="form-group"><br>
+                    <label for="sheetsu_input_1">Code</label>
+                    <input id="sheetsu_input_1" class="form-control" type="text" name="Code">
+                  </div>
+                </div>
+              </div>
+              <div class="row mt-4">
+                <div class="col-md-6 offset-md-3 col-sm-12 col-xs-12">
+                  
+                  
+                  </div>
+                </div>
+              </div>
+      
+            <input type="hidden" name="slug" value="c76297ece18d">
+      
+            <div class="row mt-4">
+              <div class="col-md-6 offset-md-3 col-sm-12 col-xs-12">
+               
+              </div>
+            </div>
+          </form>
+      
+        <div class="row mt-5 mb-5 pt-5 pb-5" id="spinner" style="display: none;">
+        <div class="col-md-6 offset-md-3 col-sm-12 col-xs-12">
+          
+        </div>
+      </div>
+      
+      <div class="row mt-5 mb-5 pt-5 pb-5" id="successMsg" style="display: none;">
+        <div class="col-md-6 offset-md-3 col-sm-12 col-xs-12">
+          <h2 class="success-message">Thank you for submitting the form!</h2>
+        </div>
+      </div>
+      
+      <div class="row mt-5 mb-5 pt-5 pb-5" id="errorMsg" style="display: none;">
+        <div class="col-md-9 offset-md-3 col-sm-12 col-xs-12">
+          <h3 class="error-message">Whoops! We encountered some error 🙀</h3>
+          <p>Please, contact form owner or <a href="mailto:team@sheetsu.com">Sheetsu Team</a>.</p>
+        </div>
+      </div>
+      
+      <div class="col-md-6 offset-md-3 col-sm-12 col-xs-12">
+        <button type="submit" class="btn btn-primary">Share Your Code</button>
+        
+      </div>
+      
+      </div>
+      
+      <script type="text/javascript">
+        $("#form").on("submit", function(e) {
           e.preventDefault();
-          saveData();
+          var serializedForm = serializeForm(e.target);
+          submitForm(serializedForm.slug, serializedForm.data);
         });
-    
-        function saveData() {
-          // Get data from inputs
-          var first_name = document.getElementsByName("first_name")[0].value,
-              score = document.getElementsByName("score")[0].value;
-    
-          // Prepare JSON to be send
-          var data = { name: first_name, score: score };
-    
-          // Save data to a spreadsheet
-          // Arguments
-          // 1 - API URL
-          // 2 - JSON representation of a row you want to save
-          // 3 - options
-          // 4 - callback function after successful save
-          Sheetsu.write("https://sheetsu.com/apis/v1.0su/bcbfe234bd57", data, {})
-            .then(function(x) {console.log(x);}, function(e) {console.log(e)});
+      
+        function submitForm(slug, data) {
+          hideForm();
+          showSpinner();
+          Sheetsu.write(slug, data, {}).then(success, error);
+        }
+      
+        function serializeForm(formElement) {
+          var elements   = formElement.elements,
+              serialized = {},
+              slug;
+            
+          for(var i=0; i < elements.length; ++i) {
+            var type  = elements[i].type,
+                name  = elements[i].name,
+                value = elements[i].value;
+            
+            if (type == "text") { serialized[name] = value; }
+            if (name == "slug" && type == "hidden") { slug = value; }
+          }
+      
+          return { slug: slug, data: serialized };
+        }
+      
+        function success() {
+          hideSpinner();
+          showSuccessMessage();
+        }
+      
+        function error(e) {
+          hideSpinner();
+          showErrorMessage();
+        }
+      
+        function hideForm() {
+          $("#form").hide();
+        }
+      
+        function showSpinner() {
+          $("#spinner").fadeIn(300);
+        }
+      
+        function hideSpinner() {
+          $("#spinner").hide();
+        }
+      
+        function showSuccessMessage() {
+          $("#successMsg").fadeIn(300);
+        }
+      
+        function showErrorMessage() {
+          $("#errorMsg").fadeIn(300);
         }
       </script>
-      <script src="https://load.sheetsu.com"></script>
+      
+      
+        
 
     </section>
     <section class="et-slide" id="tab-react">
@@ -105,11 +206,11 @@
         // Iterate over them and add each element as a list element
         function successFunc(data) {
           data.forEach(function(item, i) {
-            document.getElementById("list").innerHTML += "<li>" + item.name + " " + item.score + "</li>";
+            document.getElementById("list").innerHTML += "<li>" +  "Name " + item.Alias + " " + "Code " + item.Code + "</li>";
           });
         }
     
-        Sheetsu.read("https://sheetsu.com/apis/v1.0/020b2c0f/", {}, successFunc);
+        Sheetsu.read("https://sheetsu.com/apis/v1.0su/bcbfe234bd57", {}, successFunc);
       </script>
     </section>
     <section class="et-slide" id="tab-angular">
